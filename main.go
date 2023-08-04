@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"myjoke/config"
 	"myjoke/route"
@@ -15,12 +14,5 @@ func main() {
 	route.Routing(router)
 	config.Connect();
 
-	router.HandleFunc("/tt",TestFunc)
 	log.Fatal(http.ListenAndServe(":8083",router))
-}
-
-func TestFunc(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("hiii")
-	fmt.Fprint(w,"lkjalsdf")
-	fmt.Println("hiii")
 }
