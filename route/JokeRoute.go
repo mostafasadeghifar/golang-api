@@ -1,13 +1,16 @@
 package route
 
 import (
-	"github.com/gorilla/mux"
 	"fmt"
+	"myjoke/controller"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func Routing(router *mux.Router){
 	router.HandleFunc("/samples", SampleHandler)
+	router.HandleFunc("/index", controller.Index)
 }
 
 func SampleHandler(w http.ResponseWriter, r *http.Request){
