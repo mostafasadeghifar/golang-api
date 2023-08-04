@@ -4,13 +4,15 @@ import (
 	"fmt"
 	"log"
 	"myjoke/config"
+	"myjoke/route"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
 
 func main() {
-	router := mux.NewRouter();
+	router := mux.NewRouter()
+	route.Routing(router)
 	config.Connect();
 
 	router.HandleFunc("/tt",TestFunc)
