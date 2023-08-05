@@ -18,3 +18,8 @@ func init(){
 	db.AutoMigrate(&Joke{})
 
 }
+
+func (b *Joke) CreateJoke()  *Joke{
+	db.Create(&b)
+	return b
+}
