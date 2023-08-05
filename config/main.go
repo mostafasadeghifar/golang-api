@@ -3,24 +3,21 @@ package config
 import (
 	"gorm.io/driver/mysql"
   	"gorm.io/gorm"
-	"fmt"
 )
 
-type Joke struct {
-	Title string `json:"title"`
-	Content string `json:"content"`
-	gorm.Model
-}
+var (
+	db *gorm.DB
+)
 
-func init(){
+func Connect(){
 	dsn := "root:@tcp(127.0.0.1:3306)/go-joke?charset=utf8mb4&parseTime=True&loc=Local"
-    db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	db.AutoMigrate(&Joke{})
-	fmt.Println(db)
-	fmt.Println(err)
-	fmt.Println("from init file")
+    d, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	if err != nil {
+		panic(err)
+	}
+	db = d
 }
 
-func Connect() {
-	fmt.Printf("connect to database")
+func GetDb() *gorm.DB {
+	return db
 }
