@@ -10,6 +10,7 @@ import (
 var JokeRout = func(r *mux.Router){
 	r.HandleFunc("/samples", SampleHandler)
 	r.HandleFunc("/index", controller.Index)
+	r.HandleFunc("/create", controller.Create).Methods("POST")
 }
 // func Routing(router *mux.Router){
 // 	router.HandleFunc("/samples", SampleHandler)
