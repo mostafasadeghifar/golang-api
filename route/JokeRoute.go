@@ -7,11 +7,14 @@ import (
 
 	"github.com/gorilla/mux"
 )
-
-func Routing(router *mux.Router){
-	router.HandleFunc("/samples", SampleHandler)
-	router.HandleFunc("/index", controller.Index)
+var JokeRout = func(r *mux.Router){
+	r.HandleFunc("/samples", SampleHandler)
+	r.HandleFunc("/index", controller.Index)
 }
+// func Routing(router *mux.Router){
+// 	router.HandleFunc("/samples", SampleHandler)
+// 	router.HandleFunc("/index", controller.Index)
+// }
 
 func SampleHandler(w http.ResponseWriter, r *http.Request){
 	fmt.Fprint(w,"hi babe")
